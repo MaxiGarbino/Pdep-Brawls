@@ -1,9 +1,21 @@
-import example.pepita
+import example.*
 
 describe "group of tests for pepita" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "mision individual superada x estrategia" {
+    const tara = new Guerrera(estrategia = true, fuerza = 1, copas = 50)
+    const mision = new Individual(tipo = comun,dificultad = 10, participante= tara)
+    assert.that(mision.esSuperada())
+  }
+  test "mision individual superada x destreza" {
+    const tara = new Guerrera(estrategia = false, fuerza = 100, copas = 50)
+    const mision = new Individual(tipo = comun,dificultad = 10, participante= tara)
+    assert.that(mision.esSuperada())
+  }
+  test "no supera" {
+    const tara = new Guerrera(estrategia = false, fuerza = 1, copas = 50)
+    const mision = new Individual(tipo = comun,dificultad = 10, participante= tara)
+    assert.notThat(mision.esSuperada())
   }
 
 }
